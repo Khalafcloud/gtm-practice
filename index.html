@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kettle &amp; Bean | GTM practice site</title>
+
+<!-- STEP 1: Replace GTM-XXXXXXX below (head snippet) with your own container ID -->
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({ page_type: 'home' });
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');
+</script>
+
+<style>
+:root{--bg:#f6f7f9;--ink:#16202b;--mute:#5a6675;--line:#d5dae1;--accent:#2447d6;--accent-ink:#fff;--panel:#ffffff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,3.8rem);max-width:15ch}
+h2{font-size:1.9rem}
+p{max-width:62ch;margin:0 0 1em}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;border-bottom:1px solid var(--line)}
+header b{font-family:Georgia,serif;font-size:1.25rem}
+nav a{margin-left:20px;color:var(--mute);text-decoration:none}
+nav a:hover{color:var(--ink)}
+section{padding:90px 6vw;border-bottom:1px solid var(--line);min-height:70vh}
+.btn{display:inline-block;font:inherit;font-weight:600;background:var(--accent);color:var(--accent-ink);border:0;border-radius:4px;padding:13px 22px;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.product{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.product .box{background:var(--panel);border:1px solid var(--line);padding:26px;max-width:380px;width:100%}
+.price{font:700 1.6rem Georgia,serif}
+label{display:block;margin:0 0 14px;font-weight:600}
+input{display:block;width:100%;max-width:420px;margin-top:6px;font:inherit;padding:11px;border:1px solid var(--line);border-radius:4px;background:#fff}
+#thanks{display:none;background:#e6f4ea;border:1px solid #9bcfa9;padding:18px;max-width:520px}
+#log{position:fixed;right:12px;bottom:12px;width:min(340px,92vw);max-height:36vh;overflow:auto;background:#111a24;color:#cfe3ff;font:12px/1.5 ui-monospace,Consolas,monospace;padding:10px 12px;border-radius:6px;z-index:9}
+#log b{color:#fff}
+#log div{border-top:1px solid #243244;padding-top:4px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<!-- STEP 1 (cont.): Replace GTM-XXXXXXX below (noscript) too -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+  <b>Kettle &amp; Bean</b>
+  <nav><a href="#shop" id="nav-shop">Shop</a><a href="#wholesale" id="nav-wholesale">Wholesale</a><a href="#about" id="nav-about">About</a></nav>
+</header>
+
+<section id="top">
+  <h1>Small-batch coffee, roasted to order.</h1>
+  <p>This is a fake store built for practicing Google Tag Manager. Nothing here is real, and nothing is sent anywhere except to your own GTM container.</p>
+  <div class="row">
+    <a class="btn" id="cta-book" href="#wholesale" data-cta="book_tasting">Book a tasting</a>
+    <a class="btn alt" id="whatsapp-link" href="https://wa.me/10000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</section>
+
+<section id="shop">
+  <h2>Monthly subscription</h2>
+  <div class="product">
+    <div class="box">
+      <p><b>House Blend, 500 g</b><br>Delivered every month. Cancel anytime.</p>
+      <p class="price">$24.00</p>
+      <div class="row">
+        <button class="btn alt" id="btn-add" data-product-id="HB-500" data-product-name="House Blend 500g" data-price="24.00">Add to cart</button>
+        <button class="btn" id="btn-buy" data-product-id="HB-500" data-product-name="House Blend 500g" data-price="24.00">Buy now</button>
+      </div>
+    </div>
+    <p>Use these two buttons to practice <b>click triggers</b> and <b>e-commerce events</b> (add_to_cart, purchase) that carry a value and currency from the data layer.</p>
+  </div>
+</section>
+
+<section id="wholesale">
+  <h2>Wholesale inquiry</h2>
+  <p>Tell us about your café and we will send a sample pack.</p>
+  <form id="lead-form" novalidate>
+    <label>Name<input type="text" name="name" id="f-name" autocomplete="name" required></label>
+    <label>Email<input type="email" name="email" id="f-email" autocomplete="email" required></label>
+    <button class="btn" type="submit" id="btn-lead">Request samples</button>
+  </form>
+  <div id="thanks" role="status"><b>Thank you.</b> We received your request. (This message appears after a successful submit, and it also fires a <code>generate_lead</code> data layer event.)</div>
+</section>
+
+<section id="about">
+  <h2>About this practice site</h2>
+  <p>This section exists so the page is tall enough to practice <b>scroll depth</b> triggers (25%, 50%, 75%, 90%).</p>
+  <p>Scroll to the bottom, then check GTM Preview to see which tags fired and why.</p>
+</section>
+
+<div id="log" aria-live="polite"><b>dataLayer events from this page</b></div>
+
+<script>
+// Pushes an event to the data layer AND shows it in the on-page log panel
+function track(obj){
+  window.dataLayer.push(obj);
+  var d=document.createElement('div');
+  d.textContent=JSON.stringify(obj);
+  document.getElementById('log').appendChild(d);
+}
+
+// Button clicks (e-commerce events with value and currency)
+document.getElementById('btn-add').addEventListener('click',function(e){
+  var b=e.currentTarget;
+  track({event:'add_to_cart',currency:'USD',value:parseFloat(b.dataset.price),
+    items:[{item_id:b.dataset.productId,item_name:b.dataset.productName,price:parseFloat(b.dataset.price),quantity:1}]});
+});
+document.getElementById('btn-buy').addEventListener('click',function(e){
+  var b=e.currentTarget;
+  track({event:'purchase',transaction_id:'T'+Date.now(),currency:'USD',value:parseFloat(b.dataset.price),
+    items:[{item_id:b.dataset.productId,item_name:b.dataset.productName,price:parseFloat(b.dataset.price),quantity:1}]});
+});
+
+// Lead form: validates, then pushes generate_lead and shows the thank-you message
+document.getElementById('lead-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=document.getElementById('f-name').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  if(!name||email.indexOf('@')<1){alert('Please enter your name and a valid email.');return;}
+  track({event:'generate_lead',form_id:'lead-form',lead_type:'wholesale'});
+  this.style.display='none';
+  document.getElementById('thanks').style.display='block';
+});
+</script>
+</body>
+</html>
