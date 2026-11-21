@@ -3,131 +3,238 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kettle &amp; Bean | GTM practice site</title>
+<title>Kettle &amp; Bean | GTM practice shop</title>
 
-<!-- STEP 1: Replace GTM-XXXXXXX below (head snippet) with your own container ID -->
+<!-- GTM head snippet (already set to your container) -->
 <script>
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({ page_type: 'home' });
+window.dataLayer.push({ page_type: 'shop' });
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','	GTM-KVQHZ7N7');
+})(window,document,'script','dataLayer','GTM-KVQHZ7N7');
 </script>
 
 <style>
-:root{--bg:#f6f7f9;--ink:#16202b;--mute:#5a6675;--line:#d5dae1;--accent:#2447d6;--accent-ink:#fff;--panel:#ffffff}
+:root{--bg:#f6f7f9;--ink:#16202b;--mute:#5a6675;--line:#d5dae1;--accent:#2447d6;--panel:#fff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+[hidden]{display:none!important}
 body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
-h1,h2{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
-h1{font-size:clamp(2.2rem,6vw,3.8rem);max-width:15ch}
-h2{font-size:1.9rem}
-p{max-width:62ch;margin:0 0 1em}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;border-bottom:1px solid var(--line)}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);max-width:15ch}
+h3{font-size:1.2rem;margin-bottom:.3em}
+p{max-width:62ch;margin:0 0 .8em}
+.mute{color:var(--mute);font-size:.95rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
 header b{font-family:Georgia,serif;font-size:1.25rem}
-nav a{margin-left:20px;color:var(--mute);text-decoration:none}
-nav a:hover{color:var(--ink)}
-section{padding:90px 6vw;border-bottom:1px solid var(--line);min-height:70vh}
-.btn{display:inline-block;font:inherit;font-weight:600;background:var(--accent);color:var(--accent-ink);border:0;border-radius:4px;padding:13px 22px;cursor:pointer;text-decoration:none}
+nav button{background:none;border:0;font:inherit;color:var(--mute);margin-left:18px;cursor:pointer}
+nav button:hover{color:var(--ink)}
+main{padding:50px 6vw 120px}
+.btn{display:inline-block;font:inherit;font-weight:600;background:var(--accent);color:#fff;border:0;border-radius:4px;padding:11px 20px;cursor:pointer;text-decoration:none}
 .btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
-.btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
-.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
-.product{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
-.product .box{background:var(--panel);border:1px solid var(--line);padding:26px;max-width:380px;width:100%}
-.price{font:700 1.6rem Georgia,serif}
-label{display:block;margin:0 0 14px;font-weight:600}
-input{display:block;width:100%;max-width:420px;margin-top:6px;font:inherit;padding:11px;border:1px solid var(--line);border-radius:4px;background:#fff}
-#thanks{display:none;background:#e6f4ea;border:1px solid #9bcfa9;padding:18px;max-width:520px}
-#log{position:fixed;right:12px;bottom:12px;width:min(340px,92vw);max-height:36vh;overflow:auto;background:#111a24;color:#cfe3ff;font:12px/1.5 ui-monospace,Consolas,monospace;padding:10px 12px;border-radius:6px;z-index:9}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin:30px 0 60px}
+.card,.box{background:var(--panel);border:1px solid var(--line);padding:22px}
+.price{font:700 1.4rem Georgia,serif;margin:.2em 0 0}
+.line{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.tot{font-weight:700}
+label{display:block;margin:0 0 12px;font-weight:600}
+input[type=text],input[type=email]{display:block;width:100%;max-width:420px;margin-top:5px;font:inherit;padding:10px;border:1px solid var(--line);border-radius:4px}
+.pay label{font-weight:400}
+.steps{display:flex;gap:10px;margin-bottom:20px;color:var(--mute);font-size:.9rem}
+.steps b{color:var(--ink)}
+#thanks{background:#e6f4ea;border:1px solid #9bcfa9;padding:14px;max-width:520px}
+#log{position:fixed;right:10px;bottom:10px;width:min(330px,92vw);max-height:32vh;overflow:auto;background:#111a24;color:#cfe3ff;font:11.5px/1.5 ui-monospace,Consolas,monospace;padding:8px 10px;border-radius:6px;z-index:9}
 #log b{color:#fff}
-#log div{border-top:1px solid #243244;padding-top:4px;margin-top:4px}
+#log div{border-top:1px solid #243244;padding-top:3px;margin-top:3px;word-break:break-all}
 </style>
 </head>
 <body>
-
-<!-- STEP 1 (cont.): Replace GTM-XXXXXXX below (noscript) too -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=	GTM-KVQHZ7N7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVQHZ7N7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
   <b>Kettle &amp; Bean</b>
-  <nav><a href="#shop" id="nav-shop">Shop</a><a href="#wholesale" id="nav-wholesale">Wholesale</a><a href="#about" id="nav-about">About</a></nav>
+  <nav><button id="nav-shop">Shop</button><button id="nav-cart">Cart (<span id="count">0</span>)</button></nav>
 </header>
 
-<section id="top">
+<main>
+<!-- SHOP -->
+<div id="v-shop">
   <h1>Small-batch coffee, roasted to order.</h1>
-  <p>This is a fake store built for practicing Google Tag Manager. Nothing here is real, and nothing is sent anywhere except to your own GTM container.</p>
+  <p>A fake store for practicing Google Tag Manager. Nothing is real, and nothing goes anywhere except your own GTM container.</p>
   <div class="row">
-    <a class="btn" id="cta-book" href="#wholesale" data-cta="book_tasting">Book a tasting</a>
+    <a class="btn" id="cta-book" href="#wholesale">Book a tasting</a>
     <a class="btn alt" id="whatsapp-link" href="https://wa.me/10000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
-</section>
+  <div class="grid" id="grid"></div>
 
-<section id="shop">
-  <h2>Monthly subscription</h2>
-  <div class="product">
-    <div class="box">
-      <p><b>House Blend, 500 g</b><br>Delivered every month. Cancel anytime.</p>
-      <p class="price">$24.00</p>
-      <div class="row">
-        <button class="btn alt" id="btn-add" data-product-id="HB-500" data-product-name="House Blend 500g" data-price="24.00">Add to cart</button>
-        <button class="btn" id="btn-buy" data-product-id="HB-500" data-product-name="House Blend 500g" data-price="24.00">Buy now</button>
-      </div>
-    </div>
-    <p>Use these two buttons to practice <b>click triggers</b> and <b>e-commerce events</b> (add_to_cart, purchase) that carry a value and currency from the data layer.</p>
+  <div class="box" id="wholesale">
+    <h3>Wholesale inquiry</h3>
+    <form id="lead-form" novalidate>
+      <label>Name<input type="text" id="f-name"></label>
+      <label>Email<input type="email" id="f-email"></label>
+      <button class="btn" type="submit" id="btn-lead">Request samples</button>
+    </form>
+    <div id="thanks" hidden role="status"><b>Thank you.</b> We received your request.</div>
   </div>
-</section>
+</div>
 
-<section id="wholesale">
-  <h2>Wholesale inquiry</h2>
-  <p>Tell us about your café and we will send a sample pack.</p>
-  <form id="lead-form" novalidate>
-    <label>Name<input type="text" name="name" id="f-name" autocomplete="name" required></label>
-    <label>Email<input type="email" name="email" id="f-email" autocomplete="email" required></label>
-    <button class="btn" type="submit" id="btn-lead">Request samples</button>
+<!-- CART -->
+<div id="v-cart" hidden>
+  <h2>Your cart</h2>
+  <div id="cartlist"></div>
+  <div class="row">
+    <button class="btn alt" id="btn-continue">Keep shopping</button>
+    <button class="btn" id="btn-checkout">Checkout</button>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div id="v-checkout" hidden>
+  <h2>Checkout</h2>
+  <div class="steps"><span id="st1"><b>1 Shipping</b></span> &rarr; <span id="st2">2 Payment</span> &rarr; <span id="st3">3 Review</span></div>
+
+  <form id="ship-form" class="box" novalidate>
+    <label>Full name<input type="text" id="s-name"></label>
+    <label>Address<input type="text" id="s-addr"></label>
+    <p class="mute">Standard shipping: $4.00</p>
+    <button class="btn" type="submit" id="btn-ship">Continue to payment</button>
   </form>
-  <div id="thanks" role="status"><b>Thank you.</b> We received your request. (This message appears after a successful submit, and it also fires a <code>generate_lead</code> data layer event.)</div>
-</section>
 
-<section id="about">
-  <h2>About this practice site</h2>
-  <p>This section exists so the page is tall enough to practice <b>scroll depth</b> triggers (25%, 50%, 75%, 90%).</p>
-  <p>Scroll to the bottom, then check GTM Preview to see which tags fired and why.</p>
-</section>
+  <form id="pay-form" class="box pay" hidden>
+    <label><input type="radio" name="pay" value="credit_card" checked> Credit card (fake)</label>
+    <label><input type="radio" name="pay" value="cash_on_delivery"> Cash on delivery</label>
+    <button class="btn" type="submit" id="btn-pay">Review order</button>
+  </form>
+
+  <div id="review" class="box" hidden>
+    <div id="revlist"></div>
+    <button class="btn" id="btn-place">Place order</button>
+  </div>
+</div>
+
+<!-- DONE -->
+<div id="v-done" hidden>
+  <h2>Thank you for your order</h2>
+  <p>Order <b id="oid"></b> is confirmed. This page is where your purchase conversion fires.</p>
+  <button class="btn" id="btn-again">Back to shop</button>
+</div>
+</main>
 
 <div id="log" aria-live="polite"><b>dataLayer events from this page</b></div>
 
 <script>
-// Pushes an event to the data layer AND shows it in the on-page log panel
-function track(obj){
-  window.dataLayer.push(obj);
-  var d=document.createElement('div');
-  d.textContent=JSON.stringify(obj);
-  document.getElementById('log').appendChild(d);
+var P=[
+ {item_id:"HB-500",item_name:"House Blend 500g",price:24,item_category:"Coffee beans",d:"Balanced, chocolatey, great for daily brewing."},
+ {item_id:"ES-500",item_name:"Espresso Roast 500g",price:26,item_category:"Coffee beans",d:"Dark and syrupy, built for milk drinks."},
+ {item_id:"DC-250",item_name:"Decaf Blend 250g",price:14,item_category:"Coffee beans",d:"Swiss-water decaf with a clean finish."},
+ {item_id:"MG-001",item_name:"Ceramic Mug",price:12,item_category:"Merch",d:"Hand-glazed, 350 ml."}
+];
+var CUR="USD",SHIP=4,cart={},ship=null,pay="credit_card";
+var $=function(i){return document.getElementById(i)};
+var byId=function(id){return P.filter(function(p){return p.item_id===id})[0]};
+var money=function(n){return "$"+n.toFixed(2)};
+function item(p,q){return{item_id:p.item_id,item_name:p.item_name,price:p.price,item_category:p.item_category,quantity:q||1}}
+function lines(){return Object.keys(cart).map(function(id){return item(byId(id),cart[id])})}
+function sub(){return lines().reduce(function(s,i){return s+i.price*i.quantity},0)}
+
+// Push to the data layer (clearing the old ecommerce object first, as GA4 recommends) and show it in the log panel
+function track(o){
+  if(o.ecommerce){window.dataLayer.push({ecommerce:null})}
+  window.dataLayer.push(o);
+  var d=document.createElement("div");
+  d.textContent=o.event+(o.ecommerce&&o.ecommerce.value!=null?"  value="+o.ecommerce.value:"")+(o.ecommerce&&o.ecommerce.items?"  items="+o.ecommerce.items.length:"");
+  $("log").appendChild(d);
 }
 
-// Button clicks (e-commerce events with value and currency)
-document.getElementById('btn-add').addEventListener('click',function(e){
-  var b=e.currentTarget;
-  track({event:'add_to_cart',currency:'USD',value:parseFloat(b.dataset.price),
-    items:[{item_id:b.dataset.productId,item_name:b.dataset.productName,price:parseFloat(b.dataset.price),quantity:1}]});
-});
-document.getElementById('btn-buy').addEventListener('click',function(e){
-  var b=e.currentTarget;
-  track({event:'purchase',transaction_id:'T'+Date.now(),currency:'USD',value:parseFloat(b.dataset.price),
-    items:[{item_id:b.dataset.productId,item_name:b.dataset.productName,price:parseFloat(b.dataset.price),quantity:1}]});
+function show(v){
+  ["shop","cart","checkout","done"].forEach(function(x){$("v-"+x).hidden=(x!==v)});
+  window.scrollTo(0,0);
+  track({event:"virtual_page_view",page_path:"/"+v,page_title:"Kettle & Bean - "+v});
+}
+function updateCount(){$("count").textContent=Object.keys(cart).reduce(function(n,k){return n+cart[k]},0)}
+
+// SHOP
+$("grid").innerHTML=P.map(function(p){
+  return '<div class="card"><h3>'+p.item_name+'</h3><p class="mute d" hidden>'+p.d+'</p><p class="price">'+money(p.price)+'</p>'+
+  '<div class="row"><button class="btn alt det" data-id="'+p.item_id+'">View details</button><button class="btn add" data-id="'+p.item_id+'">Add to cart</button></div></div>';
+}).join("");
+track({event:"view_item_list",ecommerce:{item_list_id:"all_products",item_list_name:"All products",items:P.map(function(p){return item(p)})}});
+
+$("grid").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  var p=byId(b.dataset.id);
+  if(b.classList.contains("det")){
+    b.closest(".card").querySelector(".d").hidden=false;
+    track({event:"view_item",ecommerce:{currency:CUR,value:p.price,items:[item(p)]}});
+  }
+  if(b.classList.contains("add")){
+    cart[p.item_id]=(cart[p.item_id]||0)+1;updateCount();
+    track({event:"add_to_cart",ecommerce:{currency:CUR,value:p.price,items:[item(p)]}});
+  }
 });
 
-// Lead form: validates, then pushes generate_lead and shows the thank-you message
-document.getElementById('lead-form').addEventListener('submit',function(e){
+// CART
+function renderCart(){
+  var L=lines();
+  if(!L.length){$("cartlist").innerHTML='<p class="mute">Your cart is empty.</p>';$("btn-checkout").hidden=true;return}
+  $("btn-checkout").hidden=false;
+  $("cartlist").innerHTML=L.map(function(i){
+    return '<div class="line"><span>'+i.item_name+' &times; '+i.quantity+'</span><span>'+money(i.price*i.quantity)+' <button class="btn alt rm" data-id="'+i.item_id+'">Remove</button></span></div>';
+  }).join("")+'<div class="line"><span>Subtotal</span><span>'+money(sub())+'</span></div>';
+}
+function openCart(){
+  renderCart();show("cart");
+  if(Object.keys(cart).length){track({event:"view_cart",ecommerce:{currency:CUR,value:sub(),items:lines()}})}
+}
+$("nav-cart").onclick=openCart;
+$("nav-shop").onclick=function(){show("shop")};
+$("btn-continue").onclick=function(){show("shop")};
+$("cartlist").addEventListener("click",function(e){
+  var b=e.target.closest(".rm");if(!b)return;
+  var p=byId(b.dataset.id),q=cart[p.item_id];
+  track({event:"remove_from_cart",ecommerce:{currency:CUR,value:p.price*q,items:[item(p,q)]}});
+  delete cart[p.item_id];updateCount();renderCart();
+});
+
+// CHECKOUT
+function step(n){
+  $("ship-form").hidden=(n!==1);$("pay-form").hidden=(n!==2);$("review").hidden=(n!==3);
+  [1,2,3].forEach(function(i){var s=$("st"+i);s.innerHTML=(i===n)?"<b>"+s.textContent+"</b>":s.textContent});
+}
+$("btn-checkout").onclick=function(){
+  step(1);show("checkout");
+  track({event:"begin_checkout",ecommerce:{currency:CUR,value:sub(),items:lines()}});
+};
+$("ship-form").addEventListener("submit",function(e){
   e.preventDefault();
-  var name=document.getElementById('f-name').value.trim();
-  var email=document.getElementById('f-email').value.trim();
-  if(!name||email.indexOf('@')<1){alert('Please enter your name and a valid email.');return;}
-  track({event:'generate_lead',form_id:'lead-form',lead_type:'wholesale'});
-  this.style.display='none';
-  document.getElementById('thanks').style.display='block';
+  if(!$("s-name").value.trim()||!$("s-addr").value.trim()){alert("Please enter your name and address.");return}
+  track({event:"add_shipping_info",ecommerce:{currency:CUR,value:sub(),shipping_tier:"Standard",items:lines()}});
+  step(2);
+});
+$("pay-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  pay=document.querySelector("input[name=pay]:checked").value;
+  track({event:"add_payment_info",ecommerce:{currency:CUR,value:sub(),payment_type:pay,items:lines()}});
+  $("revlist").innerHTML=lines().map(function(i){return '<div class="line"><span>'+i.item_name+' &times; '+i.quantity+'</span><span>'+money(i.price*i.quantity)+'</span></div>'}).join("")+
+   '<div class="line"><span>Shipping</span><span>'+money(SHIP)+'</span></div><div class="line tot"><span>Total</span><span>'+money(sub()+SHIP)+'</span></div>';
+  step(3);
+});
+$("btn-place").onclick=function(){
+  var id="T"+Date.now();
+  track({event:"purchase",ecommerce:{transaction_id:id,value:sub()+SHIP,currency:CUR,shipping:SHIP,tax:0,items:lines()}});
+  $("oid").textContent=id;cart={};updateCount();show("done");
+};
+$("btn-again").onclick=function(){show("shop")};
+
+// Wholesale lead form
+$("lead-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  if(!$("f-name").value.trim()||$("f-email").value.indexOf("@")<1){alert("Please enter your name and a valid email.");return}
+  track({event:"generate_lead",form_id:"lead-form",lead_type:"wholesale"});
+  this.hidden=true;$("thanks").hidden=false;
 });
 </script>
 </body>
